@@ -198,10 +198,15 @@ class Sheet(models.Model):
         for sheet in self:
             sheet.total_time = sum(sheet.mapped("timesheet_ids.unit_amount"))
 
-    @api.depends("review_policy")
+    @api.depends("review_policy", "state")
     def _compute_can_review(self):
         for sheet in self:
-            sheet.can_review = self.env.user in sheet._get_possible_reviewers()
+            is_possible_reviewer = self.env.user in sheet._get_possible_reviewers()
+            sheet.can_review = is_possible_reviewer
+            admin_group_xml_id = 'hr_timesheet.group_timesheet_manager' 
+
+            if sheet.state == 'done' and self.env.user.has_group(admin_group_xml_id):
+                sheet.can_review = True
 
     @api.model
     def _search_can_review(self, operator, value):
