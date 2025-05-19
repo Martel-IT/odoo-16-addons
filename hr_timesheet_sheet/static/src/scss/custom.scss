@@ -1,14 +1,53 @@
-.o_timesheet_total_row th {
+// Variabili per i colori del weekend
+$weekend-header-bg-color: #eee;
+$weekend-cell-bg-color: #c1c1c1;
+
+// Opzionali: colori specifici se vuoi differenziare Sabato e Domenica
+// $saturday-header-bg-color: #e3f2fd; // Esempio: azzurro chiaro
+// $saturday-cell-bg-color: #f1f8e9;   // Esempio: verde molto chiaro
+
+// $sunday-header-bg-color: #ffecb3;   // Esempio: giallo chiaro
+// $sunday-cell-bg-color: #fff8e1;    // Esempio: giallo molto chiaro
+
+// Stili base per la tabella (giorni feriali)
+.o_form_view .o_field_x2many_2d_matrix .table {
+  > thead > tr > th {
     font-weight: bold !important;
     background-color: #eee !important;
+  }
+  // tbody > tr > td {} // Eventuali stili di default per celle dati feriali
+  > tfoot > tr > th {
+    font-weight: bold !important;
+    background-color: #eee !important;
+  }
 }
 
-.o_form_view .o_field_x2many_2d_matrix .table > tfoot > tr > th {
-    font-weight: bold !important;
-    background-color: #eee !important;
+.o_timesheet_total_row th { // Riguarda la riga dei totali generali
+  font-weight: bold !important;
+  background-color: #eee !important;
 }
 
-.o_form_view .o_field_x2many_2d_matrix .table > thead > tr > th {
-    font-weight: bold !important;
-    background-color: #eee !important;
+// Stili per le colonne del weekend (applicati da JavaScript)
+.colonna-weekend-header {
+  background-color: $weekend-header-bg-color !important;
 }
+.colonna-weekend-cella {
+  background-color: $weekend-cell-bg-color !important;
+}
+
+/* Attiva queste se vuoi colori diversi per Sabato e Domenica */
+/*
+.colonna-sabato-header {
+  background-color: $saturday-header-bg-color !important;
+}
+.colonna-sabato-cella {
+  background-color: $saturday-cell-bg-color !important;
+}
+
+.colonna-domenica-header {
+  background-color: $sunday-header-bg-color !important;
+}
+.colonna-domenica-cella {
+  background-color: $sunday-cell-bg-color !important;
+}
+*/

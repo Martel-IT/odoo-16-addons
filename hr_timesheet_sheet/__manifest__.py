@@ -29,6 +29,7 @@
     "assets": {
         "web.assets_backend": [
         "hr_timesheet_sheet/static/src/scss/custom.scss",
+        "hr_timesheet_sheet/static/src/js/timesheet_weekend_highlighter.js",
         ],
     },
 }
